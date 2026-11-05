@@ -473,3 +473,39 @@ h2 { font-size: 1.05rem; margin: 1.2rem 0 0.3rem; }
     padding: 2rem;
   }
 }
+
+/* ===== 10. Mejoras visuales (opcion elegida por Christian, nov 2026) =====
+   Solo aspecto: degradados, franjas de estado y etiquetas solidas.
+   No cambia ninguna funcion; se apoya en las clases ya existentes. */
+:root {
+  --color-fondo: #e8eef9;
+  --radio: 16px;
+  --sombra: 0 4px 14px rgba(29, 78, 216, 0.10);
+}
+.cabecera { background: linear-gradient(135deg, #2563eb, #1e3a8a); padding: 1.1rem 1rem; }
+.cabecera .logo { font-size: 1.35rem; }
+h1 { color: #1e3a8a; }
+.tarjeta-resumen { border-top: 4px solid #2563eb; padding: 1rem 0.5rem; }
+.tarjeta-resumen .numero { color: #1e3a8a; font-size: 1.4rem; }
+
+/* Franja de color a la izquierda segun el estado del presupuesto */
+.item-presupuesto { border-left: 5px solid transparent; }
+.item-presupuesto:has(.estado.pendiente) { border-left-color: #f59e0b; }
+.item-presupuesto:has(.estado.aceptado) { border-left-color: #22c55e; }
+.item-presupuesto:has(.estado.rechazado) { border-left-color: #ef4444; }
+
+/* Etiquetas de estado solidas (tonos oscuros para leer bien el texto blanco) */
+.estado.pendiente { background: #d97706; color: #fff; }
+.estado.aceptado { background: #16a34a; color: #fff; }
+.estado.rechazado { background: #dc2626; color: #fff; }
+.selector-estado button.elegido[data-estado="pendiente"] { background: #d97706; color: #fff; border-color: #d97706; }
+.selector-estado button.elegido[data-estado="aceptado"] { background: #16a34a; color: #fff; border-color: #16a34a; }
+.selector-estado button.elegido[data-estado="rechazado"] { background: #dc2626; color: #fff; border-color: #dc2626; }
+
+.boton-principal { background: linear-gradient(135deg, #2563eb, #1e40af); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35); }
+
+/* En ordenador el menu lateral sigue el mismo degradado */
+@media (min-width: 900px) {
+  .menu-lateral { background: linear-gradient(180deg, #2563eb, #1e3a8a); }
+  .menu-lateral .boton-nuevo { background: rgba(255, 255, 255, 0.18); box-shadow: none; }
+}
