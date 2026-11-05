@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PresuApp - Presupuestos para profesionales</title>
+  <!-- Datos para instalar la app (PWA): manifest, color de la barra e iconos -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1d4ed8">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="iconos/icono-180.png">
+  <link rel="icon" type="image/png" href="iconos/icono-192.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -201,5 +207,13 @@
   </nav>
 
   <script src="app.js"></script>
+
+  <!-- Registro del service worker: guarda la app en el móvil
+       para que abra rápido y funcione sin cobertura -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
 </body>
 </html>
