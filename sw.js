@@ -6,7 +6,7 @@
 
 // 1. Nombre y versión de la caché. Al cambiar el número,
 //    el móvil borra la copia vieja y descarga la nueva.
-var CACHE = "presuapp-v1";
+var CACHE = "presuapp-v2"; // v2: nuevo diseno (nov 2026)
 
 // 2. Archivos que se guardan nada más instalar la app.
 var ARCHIVOS = [
