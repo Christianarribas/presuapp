@@ -818,8 +818,12 @@ function exportarDatos() {
   const enlace = document.createElement("a");
   enlace.href = url;
   enlace.download = "presuapp-copia-" + hoyISO() + ".json";
+  document.body.appendChild(enlace);
   enlace.click();
-  URL.revokeObjectURL(url);
+  enlace.remove();
+  // Esperamos unos segundos antes de liberar la URL: si se libera
+  // justo después del clic, algunos navegadores cancelan la descarga.
+  setTimeout(() => URL.revokeObjectURL(url), 3000);
 }
 
 /* "1 cliente", "2 clientes": elige la palabra según la cantidad */
