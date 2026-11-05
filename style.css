@@ -509,3 +509,35 @@ h1 { color: #1e3a8a; }
   .menu-lateral { background: linear-gradient(180deg, #2563eb, #1e3a8a); }
   .menu-lateral .boton-nuevo { background: rgba(255, 255, 255, 0.18); box-shadow: none; }
 }
+
+
+/* ============================================================
+   PANTALLA DE BIENVENIDA
+   Cubre toda la pantalla al abrir la app. Al pulsar «Entrar»
+   se desvanece y deja ver «Mis presupuestos».
+   ============================================================ */
+.bienvenida {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem; text-align: center; color: #fff;
+  background: linear-gradient(160deg, #2563eb, #1e3a8a);
+  transition: opacity 0.4s ease;
+}
+.bienvenida[hidden] { display: none; }
+.bienvenida.saliendo { opacity: 0; pointer-events: none; }
+.bienvenida-caja { max-width: 22rem; }
+.bienvenida-icono { border-radius: 22px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
+.bienvenida-titulo { color: #fff; font-size: 2.4rem; margin: 1rem 0 0.5rem; }
+.bienvenida-lema { font-size: 1.05rem; line-height: 1.5; opacity: 0.92; margin: 0 0 2rem; }
+.bienvenida-boton {
+  background: #fff; color: #1e3a8a; border: 0; border-radius: 999px;
+  padding: 0.9rem 2.8rem; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+.bienvenida-boton:active { transform: scale(0.97); }
+/* Anillo de foco solo para quien navega con teclado (accesibilidad) */
+.bienvenida-boton:focus { outline: none; }
+.bienvenida-boton:focus-visible { outline: 3px solid #fde68a; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .bienvenida { transition: none; }
+}
