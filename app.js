@@ -917,3 +917,32 @@ if (vistaInicial === "editar" && datos.presupuestos.length > 0) {
 }
 
 if (parametros.get("test") === "1") autocomprobacion();
+
+
+/* ============================================================
+   PANTALLA DE BIENVENIDA
+   Se muestra al empezar una sesión nueva (pestaña o ventana nueva).
+   Se recuerda con sessionStorage, que dura mientras esa pestaña o
+   ventana siga viva: al recargar o cambiar de pantalla no vuelve a
+   salir, y al cerrarla y abrir de nuevo sí. En el móvil, si el
+   sistema mantiene la app abierta en segundo plano, puede no salir.
+   No toca tus datos.
+   ============================================================ */
+(function () {
+  var pantalla = document.getElementById("bienvenida");
+  var botonEntrar = document.getElementById("boton-entrar");
+  if (!pantalla || !botonEntrar) return;
+
+  var yaVista = false;
+  try { yaVista = sessionStorage.getItem("presuapp-bienvenida") === "1"; } catch (e) {}
+  if (yaVista) return;
+
+  pantalla.hidden = false;
+
+  botonEntrar.addEventListener("click", function () {
+    try { sessionStorage.setItem("presuapp-bienvenida", "1"); } catch (e) {}
+    pantalla.classList.add("saliendo");
+    var sinMovimiento = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setTimeout(function () { pantalla.hidden = true; }, sinMovimiento ? 0 : 400);
+  });
+})();
